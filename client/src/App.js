@@ -1,9 +1,20 @@
 import * as React from "react";
-import PrimarySearchAppBar from "./components/NavBar/index";
-import Button from "@mui/material/Button";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 // CSS baseline reset to add consistency among different browser types.
 import CssBaseline from "@mui/material/CssBaseline";
+import ReactDOM from "react-dom";
+
+// CSS baseline reset to add consistency among different browser types.
+import CssBaseline from "@mui/material/CssBaseline";
+
+// =========== COMPONENTS =============
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import SideBar from './components/SideBar';
+import PrimarySearchAppBar from "./components/NavBar/index";
+
+// ============ APP ============
+
 
 const theme = createTheme({
   palette: {
@@ -33,8 +44,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <PrimarySearchAppBar />
       <CssBaseline />
-      <Button variant="contained">DocHub!</Button>
-      </ThemeProvider>;
+      <SideBar />
+      <SignIn />
+      <SignUp />
+    </ThemeProvider>
     </>
   );
 }
