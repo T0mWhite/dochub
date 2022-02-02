@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+
   type User {
     _id: ID!
     username: String!
@@ -8,19 +9,32 @@ const typeDefs = gql`
     password: String!
   }
 
-  type Feature {
+  type Technology {
     _id: ID
-    title: String!
-    body: [Content!]
+    technology: [TechType]
   }
 
-  type Documentation {
-    _id: ID
-    title: String!
-    body: [Content!]
+  type TechType {
+    technologyName: String!
+    technologyContent: [TechContent]
   }
 
+  type TechContent {
+    contentTitle: String!
+    contentBody: [ContentBody]
+  }
 
+  type ContentBody {
+    featureName: String!
+    featureBody: [FeatureBody]
+    featureExample: [],
+    featureReference: []
+  }
+
+  type FeatureBody {
+    name: String!
+    content: []
+  }
 
   type Query {
     profiles: [Profile]!
