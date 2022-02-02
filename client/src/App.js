@@ -8,7 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 // =========== COMPONENTS =============
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import SideBar from './components/SideBar';
+import CustomizedList from './components/SideBar';
 import PrimarySearchAppBar from "./components/NavBar/index";
 
 // ============ THEME ============
@@ -43,9 +43,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <PrimarySearchAppBar />
       <CssBaseline />
-      <SideBar />
-      <SignIn />
-      <SignUp />
+      <CustomizedList/>
     </ThemeProvider>
     </>
   );
