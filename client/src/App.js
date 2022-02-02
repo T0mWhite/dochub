@@ -1,7 +1,5 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-// CSS baseline reset to add consistency among different browser types.
-import CssBaseline from "@mui/material/CssBaseline";
 import ReactDOM from "react-dom";
 
 // CSS baseline reset to add consistency among different browser types.
@@ -10,7 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 // =========== COMPONENTS =============
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import SideBar from './components/SideBar';
+import CustomizedList from './components/SideBar';
 import PrimarySearchAppBar from "./components/NavBar/index";
 
 // ============ APP ============
@@ -44,9 +42,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <PrimarySearchAppBar />
       <CssBaseline />
-      <SideBar />
-      <SignIn />
-      <SignUp />
+      <CustomizedList/>
     </ThemeProvider>
     </>
   );
