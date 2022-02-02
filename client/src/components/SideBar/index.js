@@ -27,7 +27,6 @@ const theme = createTheme({
   return (
     <div>
       <div className={styles.container}>
-        <ThemeProvider>
           <Stack spacing={2} direction="column">
             <Button className={styles.btn} variant="outlined">
               Javascript
@@ -37,7 +36,6 @@ const theme = createTheme({
             <Button variant="outlined">Outlined</Button>
             <Button variant="outlined">Outlined</Button>
           </Stack>
-        </ThemeProvider>
       </div>
     </div>
   );
