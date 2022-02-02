@@ -1,3 +1,5 @@
+// ======= REQUIREMENTS =======
+
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
@@ -10,6 +12,7 @@ const { typeDefs, resolvers } = require('./schemas');
 // ========= AUTH ==========
 const { authMiddleware } = require('./utils/auth');
 
+// ====== EXPRESS ========
 const app = express();
 const PORT = process.env.PORT || 3001;
 
