@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   type ContentBody {
     featureName: String!
-    featureBody: [FeatureBody]
+    featureBody: FeatureBody
     featureExample: [],
     featureReference: []
   }
