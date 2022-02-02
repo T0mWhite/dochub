@@ -12,7 +12,7 @@ const { typeDefs, resolvers } = require('./schemas');
 // ========= AUTH ==========
 const { authMiddleware } = require('./utils/auth');
 
-// ====== EXPRESS ========
+// ========= EXPRESS ========
 const app = express();
 const PORT = process.env.PORT || 3001;
 
