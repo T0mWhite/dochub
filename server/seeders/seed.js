@@ -1,10 +1,10 @@
 const db = require('../config/connection');
-const { User, Technology } = require('../models');
-const userSeeds = require('./userSeeds.json');
-const thoughtSeeds = require('./thoughtSeeds.json');
+const { Technology } = require('../models');
+const techSeeds = require('./techSeeds.json');
 
 db.once('open', async () => {
   try {
+    
     await Technology.deleteMany({});
 
     Technology.create(
@@ -29,6 +29,7 @@ db.once('open', async () => {
         }
       );
     }
+
   } catch (err) {
     console.error(err);
     process.exit(1);

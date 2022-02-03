@@ -69,16 +69,16 @@ const techContent = [
 ];
 
 // ============== SEED COLLECTION ==============
-Technology.create(
-  { technologyName: "Javascript", technologyContent: techContent },
-  (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(data);
-    }
-  }
-);
+// Technology.create(
+//   { technologyName: "Javascript", technologyContent: techContent },
+//   (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log(data);
+//     }
+//   }
+// );
 
 // ============== EXPORT MODEL ==============
 module.exports = Technology;
