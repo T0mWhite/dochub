@@ -1,6 +1,9 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ReactDOM from "react-dom";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 // CSS baseline reset to add consistency among different browser types.
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,7 +11,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 // =========== COMPONENTS =============
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import CustomizedList from './components/SideBar';
+import CustomizedList from './components/SideBar/index';
+import MainGridUi from './components/MainContainer/index.js';
 import PrimarySearchAppBar from "./components/NavBar/index";
 
 // ============ AUTH / APOLLO ==============
@@ -64,6 +68,9 @@ const theme = createTheme({
     text: {
       primary: '#00b7ff',
     },
+    error: {
+      main: '#d60e00',
+    },
   },
 });
 
@@ -71,13 +78,25 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <PrimarySearchAppBar />
-        <CssBaseline />
-        <CustomizedList/>
-      </ThemeProvider>
-    </ApolloProvider>
+    <>
+   <ApolloProvider client={client}>
+    <ThemeProvider theme={theme}>
+      <PrimarySearchAppBar position="fixed"/>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={2}>
+            <CustomizedList item/>
+          </Grid>
+          <Grid item xs={10}>
+            <MainGridUi />
+          </Grid>
+        </Grid>
+      </Box>
+      <CssBaseline />
+    
+    </ThemeProvider>
+   </ApolloProvider>
+    </>
   );
 }
 

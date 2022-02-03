@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Button } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -38,6 +39,20 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+}));
+
+const SignUp = styled(Button)(({ theme }) => ({
+  height: '100%',
+  position: 'absolute',
+  display: 'flex',
+  color: theme.palette.secondary.main,
+}));
+
+const LogIn = styled(Button)(({ theme }) => ({
+  height: '100%',
+  position: 'absolute',
+  display: 'flex',
+  color: theme.palette.secondary.main,
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -97,6 +112,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -184,20 +200,12 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+          <Button>
+          <LogIn>Login</LogIn>
+          </Button>
+          <Button>
+          <SignUp>Sign UP</SignUp>
+          </Button>
             <IconButton
               size="large"
               edge="end"
