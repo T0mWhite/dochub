@@ -18,11 +18,6 @@ db.once('open', async () => {
       }
     );
    
-
-
-
-
-    
     for (let i = 0; i < thoughtSeeds.length; i++) {
       const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
       const user = await User.findOneAndUpdate(
