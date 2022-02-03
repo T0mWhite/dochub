@@ -1,0 +1,19 @@
+[
+  {
+    "technologyName": "JavaScript",
+    "technologyContent": {
+        "contentTitle": "Variables",
+        "contentBody": [
+          {
+            "featureName":"Var",
+            "featureBody": "Do not use this",
+            "featureExample": ["Some code.", "Some more code."],
+            "featureReference": [
+              "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+              "https://www.w3schools.com/jsref/jsref_var.asp"
+            ]
+          }
+        ]
+    }
+  }
+]
