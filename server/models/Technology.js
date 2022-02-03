@@ -56,6 +56,7 @@ const techContent = [
     contentBody: [
       {
         featureName: "Var",
+        featureRating: 4,
         featureBody: "Do not use this.",
         featureExample: ["Some code.", "Some more code."],
         featureReference: [
