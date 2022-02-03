@@ -30,7 +30,7 @@ const technologySchema = new Schema({
               },
               featureBody: {
                 name: { type: String, required: true },
-                content: [documentationSchema],
+                content: [],
               },
               featureExample: [],
               featureReference: [],
