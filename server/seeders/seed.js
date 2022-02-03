@@ -1,40 +1,39 @@
-const db = require('../config/connection');
-const { Technology } = require('../models');
-const techSeeds = require('./techSeeds.json');
+const db = require("../config/connection");
+const { Technology } = require("../models");
+let techSeeds = require("./techSeeds.json");
 
-db.once('open', async () => {
+db.once("open", async () => {
   try {
-    
-    await Technology.deleteMany({});
-
-    Technology.create(
-      { technologyName: "Javascript", technologyContent: techContent },
-      (err, data) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(data);
-        }
+    await Technology.deleteMany({}, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(
+          "=================== 🚨 TECHNOLOGY SEED DESTROYED 🚨 ==================="
+        );
       }
-    );
-   
-    for (let i = 0; i < thoughtSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
-        {
-          $addToSet: {
-            thoughts: _id,
-          },
-        }
-      );
-    }
+    });
 
+    await Technology.create({ techSeeds }, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(
+          `${data} ==================== 🌱 TECHNOLOGY SEEDED 🌱 ==================`
+        );
+      }
+    });
+    // techSeeds = techSeeds.map((techSeed) => {
+    //   return [...techSeeds, techSeed]
+    // })
+    for (let i = 0; i < techSeeds.length; i++) {
+      const { _id, technologyName } = await Technology.create(techSeeds[i]);
+    }
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 
-  console.log('all done!');
+  console.log("all done!");
   process.exit(0);
 });

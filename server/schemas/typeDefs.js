@@ -32,14 +32,9 @@ const typeDefs = gql`
   type ContentBody {
     featureName: String!
     featureRating: Int
-    featureBody: FeatureBody
+    featureBody: String!
     featureExample: [String]
     featureReference: [String]
-  }
-
-  type FeatureBody {
-    name: String!
-    content: [String]
   }
 
   type Query {
