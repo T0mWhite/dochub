@@ -46,34 +46,34 @@ const technologySchema = new Schema({
 const Technology = mongoose.model("Technology", technologySchema);
 
 // ============== SEED DATA ==============
-const techContent = [
-  {
-    contentTitle: "Variables",
-    contentBody: [
-      {
-        featureName: "Var",
-        featureBody: "Do not use this.",
-        featureExample: ["Some code.", "Some more code."],
-        featureReference: [
-          "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
-          "https://www.w3schools.com/jsref/jsref_var.asp",
-        ],
-      },
-    ],
-  },
-];
+// const techContent = [
+//   {
+//     contentTitle: "Variables",
+//     contentBody: [
+//       {
+//         featureName: "Var",
+//         featureBody: "Do not use this.",
+//         featureExample: ["Some code.", "Some more code."],
+//         featureReference: [
+//           "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+//           "https://www.w3schools.com/jsref/jsref_var.asp",
+//         ],
+//       },
+//     ],
+//   },
+// ];
 
 // ============== SEED COLLECTION ==============
-Technology.create(
-  { technologyName: "Javascript", technologyContent: techContent },
-  (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(data);
-    }
-  }
-);
+// Technology.create(
+//   { technologyName: "Javascript", technologyContent: techContent },
+//   (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log(data);
+//     }
+//   }
+// );
 
 // ============== EXPORT MODEL ==============
 module.exports = Technology;

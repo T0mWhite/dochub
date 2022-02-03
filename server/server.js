@@ -3,7 +3,7 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
-const routes = require('./routes');
+// const routes = require('./routes');
 
 // ========== APOLLO AND GQL ========
 const { ApolloServer } = require('apollo-server-express');
