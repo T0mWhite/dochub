@@ -8,7 +8,7 @@ const technologySchema = new Schema({
     {
       technologyName: {
         type: String,
-        reuired: true,
+        required: true,
         minlength: 1,
         maxlength: 50,
       },
@@ -28,6 +28,10 @@ const technologySchema = new Schema({
                 minlength: 1,
                 maxlength: 50,
               },
+              featureRating: {
+                type: Number,
+                maxlength: 5,
+              },
               featureBody: {
                 name: { type: String, required: true },
                 content: [],
@@ -46,22 +50,23 @@ const technologySchema = new Schema({
 const Technology = mongoose.model("Technology", technologySchema);
 
 // ============== SEED DATA ==============
-// const techContent = [
-//   {
-//     contentTitle: "Variables",
-//     contentBody: [
-//       {
-//         featureName: "Var",
-//         featureBody: "Do not use this.",
-//         featureExample: ["Some code.", "Some more code."],
-//         featureReference: [
-//           "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
-//           "https://www.w3schools.com/jsref/jsref_var.asp",
-//         ],
-//       },
-//     ],
-//   },
-// ];
+const techContent = [
+  {
+    contentTitle: "Variables",
+    contentBody: [
+      {
+        featureName: "Var",
+        featureRating: 4,
+        featureBody: "Do not use this.",
+        featureExample: ["Some code.", "Some more code."],
+        featureReference: [
+          "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+          "https://www.w3schools.com/jsref/jsref_var.asp",
+        ],
+      },
+    ],
+  },
+];
 
 // ============== SEED COLLECTION ==============
 // Technology.create(

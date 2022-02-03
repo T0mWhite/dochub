@@ -7,11 +7,27 @@ db.once('open', async () => {
     
     await Technology.deleteMany({});
 
-    Technology.create(techSeeds);
-    
-    for (let i = 0; i < techSeeds.length; i++) {
-
-      const tech = await Technology.create(thoughtSeeds[i]);
+    Technology.create(
+      { technologyName: "Javascript", technologyContent: techContent },
+      (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data);
+        }
+      }
+    );
+   
+    for (let i = 0; i < thoughtSeeds.length; i++) {
+      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: thoughtAuthor },
+        {
+          $addToSet: {
+            thoughts: _id,
+          },
+        }
+      );
     }
 
   } catch (err) {

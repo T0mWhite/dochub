@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
+import { styled, alpha } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -21,23 +21,7 @@ import Public from "@mui/icons-material/Public";
 
 // =========== CUSTOM STYLES =============
 import styles from "./style.module.css";
-// import { createTheme } from '@mui/material/styles';
 
-// const theme = createTheme({
-//   status: {
-//     danger: '#e53e3e',
-//   },
-//   palette: {
-//     primary: {
-//       main: '#0971f1',
-//       darker: '#053e85',
-//     },
-//     neutral: {
-//       main: '#64748B',
-//       contrastText: '#fff',
-//     },
-//   },
-// });
 
 const data = [
   { icon: <People />, label: "Authentication" },
@@ -46,7 +30,12 @@ const data = [
   { icon: <Public />, label: "Hosting" },
 ];
 
-const SideNav = styled(List)({
+const SideNav = styled(List)(({ theme }) => ({
+  ...theme.palette.text.secondary,
+  backgroundColor: alpha(theme.palette.background.paper, 1.00),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.background.paper, 1.00),
+  },
   "& .MuiListItemButton-root": {
     paddingLeft: 24,
     paddingRight: 24,
@@ -58,13 +47,28 @@ const SideNav = styled(List)({
   "& .MuiSvgIcon-root": {
     fontSize: 20,
   },
-});
+
+}));
+
+// const SideNav = styled(List)({
+//   "& .MuiListItemButton-root": {
+//     paddingLeft: 24,
+//     paddingRight: 24,
+//   },
+//   "& .MuiListItemIcon-root": {
+//     minWidth: 0,
+//     marginRight: 16,
+//   },
+//   "& .MuiSvgIcon-root": {
+//     fontSize: 20,
+//   },
+// });
 
 export default function CustomizedList() {
   const [open, setOpen] = React.useState(true);
   return (
-    <Box sx={{ display: "flex" }}>
-      <ThemeProvider
+    <>
+      {/* <ThemeProvider
         theme={createTheme({
           components: {
             MuiListItemButton: {
@@ -79,16 +83,11 @@ export default function CustomizedList() {
             background: { paper: "rgb(5, 30, 52)" },
           },
         })}
-      >
+      > */}
         <Paper
           elevation={0}
           sx={{
-            maxWidth: 200,
-            padding: "10px",
-            margin: "5px",
-            borderRadius: "4px",
-            border: "2px",
-            borderStyle: "ridge",
+            minWidth: 200,
             height: "100vh",
           }}
         >
@@ -97,7 +96,7 @@ export default function CustomizedList() {
             <ListItem component="div" disablePadding>
               <ListItemButton sx={{ height: 56 }}>
                 <ListItemIcon>
-                  <Home color="primary" />
+                  <Home color="secondary" />
                 </ListItemIcon>
               </ListItemButton>
               <Tooltip title="Filter">
@@ -139,10 +138,10 @@ export default function CustomizedList() {
             </ListItem>
             <Divider />
             <Box
-              sx={{
-                bgcolor: open ? "rgba(71, 98, 130, 0.2)" : null,
-                pb: open ? 2 : 0,
-              }}
+              // sx={{
+              //   bgcolor: open ? "rgba(71, 98, 130, 0.2)" : null,
+              //   pb: open ? 2 : 0,
+              // }}
             >
               <ListItemButton
                 alignItems="flex-start"
@@ -192,6 +191,7 @@ export default function CustomizedList() {
                     <ListItemText
                       primary={technologies.label}
                       primaryTypographyProps={{
+                        color: "contrastText",
                         fontSize: 14,
                         fontWeight: "medium",
                       }}
@@ -202,7 +202,7 @@ export default function CustomizedList() {
             
           </SideNav>
         </Paper>
-      </ThemeProvider>
-    </Box>
+      {/* </ThemeProvider> */}
+    </>
   );
 }
