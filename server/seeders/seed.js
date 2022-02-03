@@ -1,39 +1,42 @@
 const db = require("../config/connection");
-const { Technology } = require("../models");
+const { Technology, User } = require("../models");
 let techSeeds = require("./techSeeds.json");
+let userSeeds = require("./userSeeds.json");
 
 db.once("open", async () => {
   try {
+    // ============ TECHNOLOGY SEED =========
     await Technology.deleteMany({}, (err, data) => {
       if (err) {
         console.log(err);
       } else {
         console.log(
-          "=================== 🚨 TECHNOLOGY SEED DESTROYED 🚨 ==================="
+          "=================== 🚨 TECHNOLOGY SEED DESTROYED 🚨 =========="
         );
       }
     });
 
-    await Technology.create({ techSeeds }, (err, data) => {
+    const technologyData = await Technology.insertMany(techSeeds);
+    console.log("==================== 🌱 TECHNOLOGY SEEDED 🌱 ===============");
+
+    // ======================== USER SEED ====================
+    await User.deleteMany({}, (err, data) => {
       if (err) {
         console.log(err);
       } else {
         console.log(
-          `${data} ==================== 🌱 TECHNOLOGY SEEDED 🌱 ==================`
+          "=================== 🚨 USER SEED DESTROYED 🚨 ================"
         );
       }
     });
-    // techSeeds = techSeeds.map((techSeed) => {
-    //   return [...techSeeds, techSeed]
-    // })
-    for (let i = 0; i < techSeeds.length; i++) {
-      const { _id, technologyName } = await Technology.create(techSeeds[i]);
-    }
+
+    const userData = await User.insertMany(userSeeds);
+    console.log("==================== 🌱 USER SEEDED 🌱 ===============");
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
 
-  console.log("all done!");
+  console.log("=================== 🌟 SEEDING COMPLETE 🌟 ===================");
   process.exit(0);
 });

@@ -43,23 +43,23 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = mongoose.model("User", userSchema);
 
 // ============== SEED TEST USER ==============
-User.deleteMany({}, (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('=================== 🚨 USER SEED DESTROYED 🚨 ===================');
-  }
-});
+// User.deleteMany({}, (err, data) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log('=================== 🚨 USER SEED DESTROYED 🚨 ================');
+//   }
+// });
 
-User.create(
-  { username: "test", email: "test@test.com", password: "password1" },
-  (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(`${data} ==================== 🌱 TEST USER SEEDED 🌱 ==================`);
-    }
-  }
-);
+// User.create(
+//   { username: "test", email: "test@test.com", password: "password1" },
+//   (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log(`${data} ==================== 🌱 TEST USER SEEDED 🌱 ===============`);
+//     }
+//   }
+// );
 
 module.exports = User;
