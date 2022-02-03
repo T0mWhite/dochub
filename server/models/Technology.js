@@ -8,7 +8,7 @@ const technologySchema = new Schema({
     {
       technologyName: {
         type: String,
-        reuired: true,
+        required: true,
         minlength: 1,
         maxlength: 50,
       },
@@ -27,6 +27,10 @@ const technologySchema = new Schema({
                 trim: true,
                 minlength: 1,
                 maxlength: 50,
+              },
+              featureRating: {
+                type: Number,
+                maxlength: 5,
               },
               featureBody: {
                 name: { type: String, required: true },
