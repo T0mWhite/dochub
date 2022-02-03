@@ -26,8 +26,9 @@ const typeDefs = gql`
 
   type ContentBody {
     featureName: String!
+    featureRating: Number
     featureBody: FeatureBody
-    featureExample: [],
+    featureExample: []
     featureReference: []
   }
 
@@ -37,15 +38,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
+    users: [User]
+    user(username: String!): User
+    technologies: [Technology]
+    technology(technologyName: String!): Technology
+    me: User
   }
 
   type Mutation {
-    addProfile(name: String!): Profile
-    addSkill(profileId: ID!, skill: String!): Profile
-    removeProfile(profileId: ID!): Profile
-    removeSkill(profileId: ID!, skill: String!): Profile
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addRating(featureRating: Number!): Technology
   }
 `;
 
