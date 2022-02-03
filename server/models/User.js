@@ -40,8 +40,11 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
+const User = mongoose.model('User', userSchema);
+
+
 // ============== SEED TEST USER ==============
-Technology.create(
+User.create(
   { username: "test", email: 'test@test.com', password: 'password1'  },
   (err, data) => {
     if (err) {
@@ -53,6 +56,5 @@ Technology.create(
 );
 
 
-const User = mongoose.model('User', userSchema);
 
 module.exports = User;
