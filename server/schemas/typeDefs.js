@@ -36,7 +36,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String): User
-    technologies: [Technology]
+    technologiesArray: [Technology]
     technology(technologyName: String): Technology
     me: User
   }
