@@ -6,7 +6,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    password: String!
+    password: String
   }
   
   type Auth {
@@ -20,28 +20,28 @@ const typeDefs = gql`
   }
 
   type TechType {
-    technologyName: String!
+    technologyName: String
     technologyContent: [TechContent]
   }
 
   type TechContent {
-    contentTitle: String!
+    contentTitle: String
     contentBody: [ContentBody]
   }
 
   type ContentBody {
-    featureName: String!
+    featureName: String
     featureRating: Int
-    featureBody: String!
+    featureBody: String
     featureExample: [String]
     featureReference: [String]
   }
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(username: String): User
     technologies: [Technology]
-    technology(technologyName: String!): Technology
+    technology(technologyName: String): Technology
     me: User
   }
 

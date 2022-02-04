@@ -1,4 +1,4 @@
-const { User, Book } = require("../models");
+const { User, Technology } = require("../models");
 
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
@@ -6,13 +6,13 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await undefined;
+      return await User.find({});
     },
     user: async () => {
       return await undefined;
     },
     technologies: async () => {
-      return await undefined;
+      return await Technology.find({});
     },
     technology: async () => {
       return await undefined;
