@@ -16,10 +16,6 @@ const typeDefs = gql`
 
   type Technology {
     _id: ID
-    technology: [TechType]
-  }
-
-  type TechType {
     technologyName: String
     technologyContent: [TechContent]
   }
