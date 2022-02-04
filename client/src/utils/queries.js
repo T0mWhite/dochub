@@ -23,14 +23,12 @@ export const QUERY_USER = gql`
 
 export const QUERY_TECHNOLOGIES_SIDEBAR = gql`
   query getTechnologies {
-    technologies {
-      technology {
-        technologyName
-        technologyContent {
-          contentTitle
-          contentBody {
-            featureName
-          }
+    technologiesArray {
+      technologyName
+      technologyContent {
+        contentTitle
+        contentBody {
+          featureName
         }
       }
     }
@@ -39,16 +37,24 @@ export const QUERY_TECHNOLOGIES_SIDEBAR = gql`
 
 export const QUERY_SINGLE_TECHNOLOGY_MAIN = gql`
   query getSingleTechnology($technologyName: String) {
-    technologies {
-      technology {
-        technologyName
-        technologyContent {
-          contentTitle
-          contentBody {
-            featureName
-          }
-        }
-      }
+    technology(technologyName: $technologyName) {
+      technologyName
     }
   }
 `;
+
+// query getSingleTechnology($technologyName: String) {
+//   technology (technologyName: $technologyName) {
+//     technologyName
+//     technologyContent {
+//       contentTitle
+//       contentBody{
+//         featureName
+//         featureRating
+//         featureBody
+//         featureExample
+//         featureReference
+//       }
+//     }
+//   }
+// }
