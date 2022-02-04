@@ -25,10 +25,3 @@ mutation addUser($username: String!, $email: String!, $password: String!){
   
 }
 `;
-
-// export const ADD_RATING = gql`
-//     mutation addRating($featureRating: Number!) {
-//       _id
-//       featureRating
-//     }
-// `;

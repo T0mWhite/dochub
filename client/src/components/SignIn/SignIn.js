@@ -39,7 +39,7 @@ export default function SignIn(props) {
   const [formState, setFormState] = useState({
     email: "", password: ""
   });
-  const [login, {error}] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
