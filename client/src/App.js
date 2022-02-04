@@ -11,9 +11,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 // =========== COMPONENTS =============
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import CustomizedList from './components/SideBar/index';
-import MainGridUi from './components/MainContainer/index.js';
-import PrimarySearchAppBar from "./components/NavBar/index";
+import CustomizedList from "./components/SideBar/index";
+import MainGridUi from "./components/MainContainer/index";
+import ResponsiveAppBar from "./components/DrawerTest/index";
+// import PrimarySearchAppBar from "./components/NavBar/index";
 
 // ============ THEME ============
 
@@ -40,6 +41,15 @@ const theme = createTheme({
       main: '#d60e00',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 });
 
 // ============ APP ============
@@ -48,19 +58,18 @@ function App() {
   return (
     <>
     <ThemeProvider theme={theme}>
-      <PrimarySearchAppBar position="fixed"/>
+      <ResponsiveAppBar position="fixed"/>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <CustomizedList item/>
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={9}>
             <MainGridUi />
           </Grid>
         </Grid>
       </Box>
-      <CssBaseline />
-    
+      <CssBaseline/>
     </ThemeProvider>
     </>
   );

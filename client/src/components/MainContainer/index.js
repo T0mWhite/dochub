@@ -4,46 +4,48 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
-import LocalFireDepartmentTwoToneIcon from '@mui/icons-material/LocalFireDepartmentTwoTone';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import DocRating from '../Rating';
 
-const Fire = styled(LocalFireDepartmentTwoToneIcon)(({ theme }) =>({
-    color: theme.palette.error.main,
-}));
-
-const NotFire = styled(LocalFireDepartmentTwoToneIcon)(({ theme }) =>({
-    color: theme.palette.text.primary,
-}));
-
-const Space = styled(Paper)(({ theme }) => ({
+const DocTitle = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(4),
-  textAlign: 'left',
+  padding: theme.spacing(2, 4),
+  position: 'relative',
+  display: 'flex',
+  textAlign: 'center',
+  justifyContent: 'center',
   fontSize: 30,
+  color: theme.palette.primary.contrastText,
+}));
+
+const SubTitle = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(2, 4),
+  position: 'relative',
+  display: 'flex',
+  textAlign: 'center',
+  justifyContent: 'center',
+  fontSize: 20,
   color: theme.palette.primary.contrastText,
 }));
 
 const Body = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(4),
+    position: 'relative',
+    display: 'flex',
     textAlign: 'center',
-    fontSize: 16,
-    color: theme.palette.primary.text,
-  }));
-
-  const DocRating = styled(Paper)(({ theme }) => ({
-    ...theme.typography.subtitle1,
-    padding: theme.spacing(1),
-    textAlign: 'left',
     fontSize: 16,
     color: theme.palette.primary.text,
   }));
   
   const AddRevision = styled(Button)(({ theme }) => ({
     ...theme.typography.subtitle1,
-    padding: theme.spacing(1),
-    textAlign: 'left',
+    padding: theme.spacing(1),  
+    position: 'relative',
+    display: 'flex',
+    textAlign: 'center',
     fontSize: 14,
     color: theme.palette.primary.contrastText,
   }));
@@ -51,7 +53,9 @@ const Body = styled(Paper)(({ theme }) => ({
   const HoistMe = styled(Button)(({ theme }) => ({
     ...theme.typography.subtitle1,
     padding: theme.spacing(1),
-    textAlign: 'left',
+    position: 'relative',
+    display: 'flex',
+    textAlign: 'center',
     fontSize: 14,
     color: theme.palette.secondary.contrastText,
   }));
@@ -59,7 +63,9 @@ const Body = styled(Paper)(({ theme }) => ({
   const HoistMeCount = styled('div')(({ theme }) => ({
     ...theme.typography.h1,
     padding: theme.spacing(1),
-    textAlign: 'left',
+    position: 'relative',
+    display: 'flex',
+    textAlign: 'center',
     fontSize: 16,
     color: theme.palette.primary.contrastText,
   }));
@@ -67,21 +73,18 @@ const Body = styled(Paper)(({ theme }) => ({
 
 export default function MainGridUi() {
   return (
-    <Box sx={{ flexGrow: 2 }}>
-      <Grid container spacing={4}>
+    <Box sx={{ flexGrow: 1, justifyContent: 'center', margin: '1vw'}}>
+      <Grid container spacing={1}>
         <Grid item xs={12}>
-          <Space>
-          Hello, Whats the good word? French Fries! Tacos!
-          </Space>
+          <DocTitle>
+          Document Title
+          </DocTitle>
+          <SubTitle>
+            Subtitle
+          </SubTitle>
         </Grid>
-        <Grid item xs={6}>
-            <DocRating>RATE THIS DOCUMENTATION
-                <Fire/>
-                    <Fire/>
-                        <Fire/>
-                            <NotFire/>
-                                <NotFire/>
-            </DocRating>
+        <Grid item xs={3}>
+            <DocRating/>
         </Grid>
         <Grid item xs={3}>
             <Button>
