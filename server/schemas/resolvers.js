@@ -11,6 +11,10 @@ const resolvers = {
     //     return user;
     //   }
     // },
+    getUser: async (parent, { _id }, context) => {
+      const user = await User.findById(_id);
+      return user;
+    },
 
     // Get all technologies for the sidebar
     technologiesArray: async () => {
@@ -18,23 +22,19 @@ const resolvers = {
     },
 
     // Get single technology for the main view page
-    technology: async (parent, {technologyName}, context) => {
-      const technology =  await Technology.findOne({technologyName});
-        console.log(technologyName);
-        console.log(technology);
-        return technology;
-    },
-    me: async () => {
-      return await undefined;
+    technology: async (parent, { technologyName }, context) => {
+      const technology = await Technology.findOne({ technologyName });
+      console.log(technologyName);
+      console.log(technology);
+      return technology;
     },
   },
   Mutation: {
     addUser: async () => {
       return await undefined;
     },
-    login: async (parent, {email, password }) => {
+    login: async (parent, { email, password }) => {
       return await User.findOne({ email });
-
     },
     addRating: async () => {
       return await undefined;
