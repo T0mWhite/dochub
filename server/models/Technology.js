@@ -4,42 +4,38 @@ const { Schema, model } = require("mongoose");
 
 // ============== SCHEMA ==============
 const technologySchema = new Schema({
-  technology: [
+  technologyName: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    maxlength: 50,
+  },
+  technologyContent: [
     {
-      technologyName: {
+      contentTitle: {
         type: String,
         // required: true,
-        minlength: 1,
-        maxlength: 50,
+        trim: true,
       },
-      technologyContent: [
+      contentBody: [
         {
-          contentTitle: {
+          featureName: {
             type: String,
             // required: true,
             trim: true,
+            minlength: 1,
+            maxlength: 50,
           },
-          contentBody: [
-            {
-              featureName: {
-                type: String,
-                // required: true,
-                trim: true,
-                minlength: 1,
-                maxlength: 50,
-              },
-              featureRating: {
-                type: Number,
-                maxlength: 5,
-              },
-              featureBody: {
-                type: String,
-                // required: true,
-              },
-              featureExample: [],
-              featureReference: [],
-            },
-          ],
+          featureRating: {
+            type: Number,
+            maxlength: 5,
+          },
+          featureBody: {
+            type: String,
+            // required: true,
+          },
+          featureExample: [],
+          featureReference: [],
         },
       ],
     },

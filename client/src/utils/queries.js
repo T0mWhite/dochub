@@ -21,39 +21,33 @@ export const QUERY_USER = gql`
 //   }
 // `;
 
-export const QUERY_TECHNOLOGIES = gql`
+export const QUERY_TECHNOLOGIES_SIDEBAR = gql`
   query getTechnologies {
-    technology {
-      _id
-      technologyName
-      technologyContent {
-        _id
-        contentTitle
-        contentBody {
-          featureName
+    technologies {
+      technology {
+        technologyName
+        technologyContent {
+          contentTitle
+          contentBody {
+            featureName
+          }
         }
       }
     }
   }
 `;
 
-export const QUERY_SINGLE_TECHNOLOGY = gql`
+export const QUERY_SINGLE_TECHNOLOGY_MAIN = gql`
   query getSingleTechnology($technologyName: String) {
-    technology {
-      _id
-      technologyName
-      technologyContent {
-        _id
-        contentTitle
-        contentBody {
-          featureName
-          featureRating
-          featureBody {
-            name
-            content
+    technologies {
+      technology {
+        technologyName
+        technologyContent {
+          contentTitle
+          contentBody {
+            featureName
           }
-          featureExample
-          featureReference
+        }
       }
     }
   }
