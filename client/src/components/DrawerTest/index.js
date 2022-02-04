@@ -17,7 +17,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Products', 'Pricing', 'About'];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,6 +58,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       width: '40ch',
     },
   },
+}));
+
+const SignUp = styled(Button)(({ theme }) => ({
+  height: '100%',
+  position: 'absolute',
+  display: 'flex',
+  color: theme.palette.secondary.main,
+}));
+
+const LogIn = styled(Button)(({ theme }) => ({
+  height: '100%',
+  position: 'absolute',
+  display: 'flex',
+  color: theme.palette.secondary.main,
 }));
 
 const ResponsiveAppBar = () => {
@@ -126,7 +140,7 @@ const ResponsiveAppBar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search that sweet documentation…"
+              placeholder="Search..."
               inputProps={{ 'aria-label': 'search' }}
               theme={{ }}
             />
@@ -152,14 +166,13 @@ const ResponsiveAppBar = () => {
               theme={{ }}
             />
             </Search>
-              <Button
-            
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-              </Button>
           </Box>
-
+          <Button>
+          <LogIn>Login</LogIn>
+          </Button>
+          <Button>
+          <SignUp>Sign UP</SignUp>
+          </Button>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
