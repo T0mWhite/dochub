@@ -14,8 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // ============= AUTH + GQL ===============
-import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 
 // ========== COPYRIGHT TEXT =========
