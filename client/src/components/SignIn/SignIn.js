@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +13,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { styled, alpha } from '@mui/material/styles';
 
+// ============= AUTH + GQL ===========
+import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+
+// ============= COPYRIGHT TEXT =======
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -27,15 +33,34 @@ function Copyright(props) {
 }
 
 
+// ============ SIGN IN ============
+export default function SignIn(props) {
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
+  const [formState, setFormState] = useState({
+    email: "", password: ""
+  });
+  const [login, {error}] = useMutation(LOGIN_USER);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    try {
+      const mutationResponse = await login({
+        variables: {email: formState.email,
+        password: formState.password},
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
