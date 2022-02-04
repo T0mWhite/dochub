@@ -37,20 +37,24 @@ const theme = createTheme();
 // ================ SIGN UP ==============
 
 export default function SignUp() {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log('oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo');
     try {
+      console.log('cucumber acquired');
       const mutationResponse = await addUser({
         variables: {
+          username: formState.username,
           email: formState.email,
           password: formState.password,
-          username: formState.username,
         },
       });
       const token = mutationResponse.data.addUser.token;
+      console.log(mutationResponse);
+      console.log(token);
       Auth.login(token);
       
     } catch (error) {
@@ -88,23 +92,13 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  name="username"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="username"
+                  label="User Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -115,6 +109,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -126,6 +121,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
