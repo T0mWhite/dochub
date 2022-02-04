@@ -6,7 +6,12 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    password: String!
+    password: String
+  }
+  
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Technology {
@@ -15,40 +20,35 @@ const typeDefs = gql`
   }
 
   type TechType {
-    technologyName: String!
+    technologyName: String
     technologyContent: [TechContent]
   }
 
   type TechContent {
-    contentTitle: String!
+    contentTitle: String
     contentBody: [ContentBody]
   }
 
   type ContentBody {
-    featureName: String!
-    featureRating: Number
-    featureBody: FeatureBody
-    featureExample: []
-    featureReference: []
-  }
-
-  type FeatureBody {
-    name: String!
-    content: []
+    featureName: String
+    featureRating: Int
+    featureBody: String
+    featureExample: [String]
+    featureReference: [String]
   }
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(username: String): User
     technologies: [Technology]
-    technology(technologyName: String!): Technology
+    technology(technologyName: String): Technology
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addRating(featureRating: Number!): Technology
+    addRating(featureRating: Int!): Technology
   }
 `;
 

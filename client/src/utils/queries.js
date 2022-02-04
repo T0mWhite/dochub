@@ -10,6 +10,17 @@ export const QUERY_USER = gql`
   }
 `;
 
+// multiple users
+// export const QUERY_ALL_USERS = gql`
+//   query user($username: String!) {
+//     user(username: $username) {
+//       _id
+//       username
+//       email
+//     }
+//   }
+// `;
+
 export const QUERY_TECHNOLOGIES = gql`
   query getTechnologies {
     technology {
@@ -27,7 +38,7 @@ export const QUERY_TECHNOLOGIES = gql`
 `;
 
 export const QUERY_SINGLE_TECHNOLOGY = gql`
-  query getSingleTechnology($technologyName: String!) {
+  query getSingleTechnology($technologyName: String) {
     technology {
       _id
       technologyName

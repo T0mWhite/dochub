@@ -1,19 +1,52 @@
 [
   {
-    "technologyName": "JavaScript",
-    "technologyContent": {
-        "contentTitle": "Variables",
-        "contentBody": [
-          {
-            "featureName":"Var",
-            "featureBody": "Do not use this",
-            "featureExample": ["Some code.", "Some more code."],
-            "featureReference": [
-              "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
-              "https://www.w3schools.com/jsref/jsref_var.asp"
-            ]
-          }
-        ]
-    }
+    "technology": [
+      {
+        "technologyName": "JavaScript",
+        "technologyContent": 
+          [
+            {
+              "contentTitle": "Variables",
+              "contentBody": [
+                {
+                  "featureName":"Var",
+                  "featureRating": 4,
+                  "featureBody": "Don't use this!",
+                  "featureExample": ["Some code.", "Some more code."],
+                  "featureReference": [
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+                    "https://www.w3schools.com/jsref/jsref_var.asp"
+                  ]
+                }
+              ]
+            }
+          ]
+      }
+    ]
+  },
+  {
+    "technology": [
+      {
+        "technologyName": "React.js",
+        "technologyContent": 
+          [
+            {
+              "contentTitle": "Hooks",
+              "contentBody": [
+                {
+                  "featureName":"useState",
+                  "featureRating": 5,
+                  "featureBody": "lorem ipsum",
+                  "featureExample": ["Some code.", "Some more code."],
+                  "featureReference": [
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+                    "https://www.w3schools.com/jsref/jsref_var.asp"
+                  ]
+                }
+              ]
+            }
+          ]
+      }
+    ]
   }
 ]
