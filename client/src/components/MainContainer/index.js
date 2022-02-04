@@ -6,7 +6,7 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import AddCircleTwoToneIcon from '@mui/icons-material/AddCircleTwoTone';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import DocRating from '../Rating';
+import DocRating from './Rating';
 
 const DocTitle = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
