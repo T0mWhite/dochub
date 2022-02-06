@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ReactDOM from "react-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -19,6 +18,7 @@ import ResponsiveAppBar from "./Nav/index";
 function Home() {
   return (
     <>
+    <CssBaseline />
       <ResponsiveAppBar position="fixed" />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
@@ -30,8 +30,7 @@ function Home() {
           </Grid>
         </Grid>
       </Box>
-      <CssBaseline />
-    </>
+      </>
   );
 }
 

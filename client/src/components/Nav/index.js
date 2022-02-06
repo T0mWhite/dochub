@@ -69,14 +69,14 @@ const SignUp = styled(Button)(({ theme }) => ({
   height: "100%",
   position: "relative",
   display: "flex",
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
 }));
 
 const LogIn = styled(Button)(({ theme }) => ({
   height: "100%",
   position: "relative",
   display: "flex",
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
 }));
 
 

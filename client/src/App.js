@@ -52,12 +52,13 @@ const theme = createTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#00cfff',
+      main: '#000000',
       contrastText: '#18fd64',
     },
     secondary: {
       main: '#18ccff',
       contrastText: 'rgba(226,230,86,0.87)',
+      dark: '#000000',
     },
     background: {
       paper: '#2d2d2d',
@@ -69,6 +70,7 @@ const theme = createTheme({
     },
     error: {
       main: '#d60e00',
+      contrastText: '#e2e2e2',
     },
   },
   breakpoints: {
