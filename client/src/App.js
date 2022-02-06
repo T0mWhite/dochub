@@ -50,25 +50,25 @@ const client = new ApolloClient({
 
 const theme = createTheme({
   palette: {
-    type: "dark",
+    type: 'dark',
     primary: {
-      main: "#000000",
-      contrastText: "#1cfb3a",
-      light: "#272727",
+      main: '#00cfff',
+      contrastText: '#18fd64',
     },
     secondary: {
-      main: "#00f5b5",
-      contrastText: "rgba(226,230,86,0.87)",
+      main: '#18ccff',
+      contrastText: 'rgba(226,230,86,0.87)',
     },
     background: {
-      default: "#000000",
-      paper: "#181818",
+      paper: '#2d2d2d',
+      default: '#000000',
     },
     text: {
-      primary: "#00b7ff",
+      primary: '#19fd0d',
+      secondary: '#0993f9',
     },
     error: {
-      main: "#d60e00",
+      main: '#d60e00',
     },
   },
   breakpoints: {

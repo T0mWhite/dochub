@@ -69,15 +69,16 @@ const SignUp = styled(Button)(({ theme }) => ({
   height: "100%",
   position: "relative",
   display: "flex",
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
 }));
 
 const LogIn = styled(Button)(({ theme }) => ({
   height: "100%",
   position: "relative",
   display: "flex",
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
 }));
+
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
