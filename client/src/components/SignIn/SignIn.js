@@ -101,16 +101,14 @@ export default function SignIn() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
                 name="email"
-                autoComplete="email"
                 autoFocus
                 onChange={handleChange}
                 sx={{ 
-                  bgcolor: 'error.contrastText',
                   color: 'secondary.dark, .25',
                   fontStyle: 'italic',
-                  borderRadius: 3,
+                  borderColor: 'primary.text',
+                  border: 1,
                 }}
               />Password
               <TextField
@@ -118,16 +116,14 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
                 onChange={handleChange}
                 sx={{ 
-                  bgcolor: 'error.contrastText',
                   color: 'secondary.dark, .25',
                   fontStyle: 'italic',
-                  borderRadius: 3,
+                  borderColor: 'primary.text',
+                  border: 1,
                 }}
               />
               <Button
