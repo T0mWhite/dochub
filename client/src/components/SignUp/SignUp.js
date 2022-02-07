@@ -89,20 +89,19 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 5 }}>
             <Grid container spacing={4} justifyContent='center'>
-              <Grid item xs={10}>User-name
+              <Grid item xs={10}>Username
                 <TextField
                   name="username"
                   required
                   fullWidth
                   id="username"
-                  label="User Name"
                   autoFocus
                   onChange={handleChange}
                   sx={{ 
-                    bgcolor: 'error.contrastText',
                     color: 'secondary.dark, .25',
                     fontStyle: 'italic',
-                    borderRadius: 3,
+                    borderColor: 'primary.text',
+                    border: 1,
                   }}
                 />
               </Grid>
@@ -111,15 +110,13 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
                   name="email"
-                  autoComplete="email"
                   onChange={handleChange}
                   sx={{ 
-                    bgcolor: 'error.contrastText',
                     color: 'secondary.dark, .25',
                     fontStyle: 'italic',
-                    borderRadius: 3,
+                    borderColor: 'primary.text',
+                    border: 1,
                   }}
                 />
               </Grid>
@@ -128,16 +125,14 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
                   onChange={handleChange}
                   sx={{ 
-                    bgcolor: 'error.contrastText',
                     color: 'secondary.dark, .25',
                     fontStyle: 'italic',
-                    borderRadius: 3,
+                    borderColor: 'primary.text',
+                    border: 1,
                   }}
                 />
               </Grid>
