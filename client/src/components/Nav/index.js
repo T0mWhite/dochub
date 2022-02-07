@@ -22,7 +22,6 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "../../static/images/LogoLg.png";
 import logosmall from "../../static/images/LogoSm.png";
 
-
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Search = styled("div")(({ theme }) => ({
@@ -78,7 +77,6 @@ const LogIn = styled(Button)(({ theme }) => ({
   display: "flex",
   color: theme.palette.primary.contrastText,
 }));
-
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
