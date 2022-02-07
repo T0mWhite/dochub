@@ -10,6 +10,7 @@ import DocRating from "./Rating";
 import Typography from "@mui/material/Typography";
 
 import Constex from "../../static/images/Constexample.png"
+import Letex from "../../static/images/Letexample.png"
 
 const DocTitle = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -153,8 +154,16 @@ export default function MainGridUi() {
             Examples:
           </Typography>
           <Typography>
+            Const:
           <img
           src={Constex}
+          alt="ex1"
+        />
+          </Typography>
+          <Typography>
+            Let:
+          <img
+          src={Letex}
           alt="ex1"
         />
           </Typography>
