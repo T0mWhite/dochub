@@ -67,17 +67,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SignUp = styled(Button)(({ theme }) => ({
   height: "100%",
-  position: "absolute",
+  position: "relative",
   display: "flex",
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.contrastText,
 }));
 
 const LogIn = styled(Button)(({ theme }) => ({
   height: "100%",
-  position: "absolute",
+  position: "relative",
   display: "flex",
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.contrastText,
 }));
+
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

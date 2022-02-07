@@ -16,7 +16,8 @@ const DocTitle = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   justifyContent: 'center',
   fontSize: 30,
-  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.secondary.main,
 }));
 
 const SubTitle = styled(Paper)(({ theme }) => ({
@@ -27,6 +28,7 @@ const SubTitle = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   justifyContent: 'center',
   fontSize: 20,
+  backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,
 }));
 
@@ -44,6 +46,7 @@ const Body = styled(Paper)(({ theme }) => ({
     ...theme.typography.subtitle1,
     padding: theme.spacing(1),  
     position: 'relative',
+    margin: 'auto',
     display: 'flex',
     textAlign: 'center',
     fontSize: 14,
@@ -74,7 +77,7 @@ const Body = styled(Paper)(({ theme }) => ({
 export default function MainGridUi() {
   return (
     <Box sx={{ flexGrow: 1, justifyContent: 'center', margin: '1vw'}}>
-      <Grid container spacing={1}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <DocTitle>
           Document Title
@@ -83,12 +86,22 @@ export default function MainGridUi() {
             Subtitle
           </SubTitle>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} sx={{ 
+          flexGrow: 1,
+          display: 'flex',
+          textAlign: 'center', 
+          }}>
+          Rate this Doc...
             <DocRating/>
         </Grid>
         <Grid item xs={3}>
-            <Button>
-            <AddRevision>
+            <Button sx={{
+              border: 1,
+              borderColor: 'secondary.main',
+            }}>
+            <AddRevision sx={{
+              textAlign: 'center',
+            }}>
                 Add Revision
                 <AddCircleTwoToneIcon/>
             </AddRevision>
@@ -96,12 +109,18 @@ export default function MainGridUi() {
             </Button> 
         </Grid>
         <Grid item xs={3}>
-                <Button>
+                <Button sx={{
+              border: 1,
+              borderColor: 'secondary.contrastText',
+            }}>
                     <HoistMe>
                     Hoist Me
                     <BeachAccessIcon/>
                     </HoistMe>
-                    <HoistMeCount>(34)</HoistMeCount>
+                    <HoistMeCount sx={{
+                      color: 'secondary.main',
+                    }}>
+                      (34)</HoistMeCount>
                 </Button>
                 
         </Grid>

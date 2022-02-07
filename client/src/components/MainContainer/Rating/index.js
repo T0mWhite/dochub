@@ -18,11 +18,11 @@ const StyledRating = styled(Rating)({
   });
 
   const labels = {
-    1: 'This is documentation?',
-    2: 'I can read... most of it',
-    3: 'Acceptable',
-    4: 'Quality Doc right here',
-    5: 'This Doc slaps!',
+    1: '',
+    2: '',
+    3: '',
+    4: '',
+    5: '',
   };
 
 

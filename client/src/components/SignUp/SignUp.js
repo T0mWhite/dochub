@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
+import { ListItemSecondaryAction } from '@mui/material';
 
 // ========== COPYRIGHT TEXT =========
 function Copyright(props) {
@@ -31,8 +32,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
-const theme = createTheme();
 
 // ================ SIGN UP ==============
 
@@ -71,7 +70,7 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -88,9 +87,9 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 5 }}>
+            <Grid container spacing={4} justifyContent='center'>
+              <Grid item xs={10}>User-name
                 <TextField
                   name="username"
                   required
@@ -99,9 +98,15 @@ export default function SignUp() {
                   label="User Name"
                   autoFocus
                   onChange={handleChange}
+                  sx={{ 
+                    bgcolor: 'error.contrastText',
+                    color: 'secondary.dark, .25',
+                    fontStyle: 'italic',
+                    borderRadius: 3,
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={10} sx={{ justifyContent: 'center'}}>Email Address
                 <TextField
                   required
                   fullWidth
@@ -110,9 +115,15 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                   onChange={handleChange}
+                  sx={{ 
+                    bgcolor: 'error.contrastText',
+                    color: 'secondary.dark, .25',
+                    fontStyle: 'italic',
+                    borderRadius: 3,
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={10}>Password
                 <TextField
                   required
                   fullWidth
@@ -122,12 +133,18 @@ export default function SignUp() {
                   id="password"
                   autoComplete="new-password"
                   onChange={handleChange}
+                  sx={{ 
+                    bgcolor: 'error.contrastText',
+                    color: 'secondary.dark, .25',
+                    fontStyle: 'italic',
+                    borderRadius: 3,
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="If you feel like clicking this check-box, go ahead, we won't send you any emails regardless. It's just for fun."
                 />
               </Grid>
             </Grid>
@@ -135,7 +152,12 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ 
+                border: 1,
+                mt: 3,
+                mb: 2,
+                borderColor: 'secondary.main',
+              }}
             >
               Sign Up
             </Button>
@@ -150,6 +172,6 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>
+    </>
   );
 }
