@@ -3,20 +3,14 @@ import Box from "@mui/material/Box";
 import { styled, alpha } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
+import Button from '@mui/material/Button';
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ArrowRight from "@mui/icons-material/ArrowRight";
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Home from "@mui/icons-material/Home";
 import Settings from "@mui/icons-material/Settings";
 import People from "@mui/icons-material/People";
@@ -69,6 +63,10 @@ export default function CustomizedList() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const pageChange = () => {
+    alert("Face");
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -156,9 +154,11 @@ export default function CustomizedList() {
                 bgcolor: 'primary.main',
                 border: 1,
                 borderTop: 0,
+                flexDirection: 'row',
                 borderColor: 'primary.contrastText',
               }}>
                 <Typography sx={{
+                  bgcolor: 'primary.main',
                   paddingLeft: 1,
                   color: 'primary.contrastText',
                   fontSize: '.90rem',
@@ -167,7 +167,6 @@ export default function CustomizedList() {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-
           </Box>
         </SideNav>
       </Paper>
