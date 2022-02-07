@@ -10,6 +10,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowRight from "@mui/icons-material/ArrowRight";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Home from "@mui/icons-material/Home";
@@ -36,9 +41,9 @@ const iconData = [
 
 const SideNav = styled(List)(({ theme }) => ({
   ...theme.palette.text.secondary,
-  backgroundColor: alpha(theme.palette.background.paper, 1.0),
+  backgroundColor: alpha(theme.palette.background.paper, .0),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.background.paper, 1.0),
+    backgroundColor: alpha(theme.palette.background.paper, .0),
   },
   "& .MuiListItemButton-root": {
     paddingLeft: 24,
@@ -59,6 +64,12 @@ export default function CustomizedList() {
   const { loading, data } = useQuery(QUERY_TECHNOLOGIES_SIDEBAR);
   console.log(data);
 
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -68,61 +79,95 @@ export default function CustomizedList() {
         elevation={0}
         sx={{
           height: "100vh",
+          bgcolor: 'primary.main',
         }}
       >
-        <SideNav component="nav" disablePadding>
+        <SideNav component="nav" disablePadding sx={{
+          bgcolor: 'primary.main',
+          }}>
           <Divider />
-          <ListItem component="div" disablePadding>
-            <ListItemButton sx={{ height: 56 }}>
-              <ListItemIcon>
-                <Home color="secondary" />
-              </ListItemIcon>
-            </ListItemButton>
-            <Tooltip title="Filter">
-              <IconButton
-                size="large"
+          <ListItemText sx={{
+            marginLeft: 1,
+            padding: 2,
+            border: 1,
+            borderColor: 'secondary.contrastText',
+          }}>
+            Traverse The Dom
+          </ListItemText>
+          <Box>
+            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{
+                  color: 'secondary.contrastText'
+                }} />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
                 sx={{
-                  "& svg": {
-                    color: "rgba(255,255,255,0.8)",
-                    transition: "0.2s",
-                    transform: "translateX(0) rotate(0)",
-                  },
-                  "&:hover, &:focus": {
-                    bgcolor: "unset",
-                    "& svg:first-of-type": {
-                      transform: "translateX(-4px) rotate(-20deg)",
-                    },
-                    "& svg:last-of-type": {
-                      right: 0,
-                      opacity: 1,
-                    },
-                  },
-                  "&:after": {
-                    content: '""',
-                    position: "absolute",
-                    height: "80%",
-                    display: "block",
-                    left: 0,
-                    width: "1px",
-                    bgcolor: "divider",
-                  },
+                  bgcolor: 'primary.main',
+                  borderRight: 1,
+                  borderColor: 'secondary.contrastText',
                 }}
               >
-                <Settings />
-                <ArrowRight
-                  sx={{ position: "absolute", right: 4, opacity: 0 }}
-                />
-              </IconButton>
-            </Tooltip>
-          </ListItem>
-          <Divider />
-          <Box>
-            {open &&
-              data.technologiesArray.map((technology) => (
-                <>
-                  
-                </>
-              ))}
+                <Typography sx={{ width: '33%', 
+                flexShrink: 0, 
+                fontSize: '1.0rem',
+                color: 'secondary.main',
+                 }}>
+                  {data.technologiesArray[0].technologyName}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails sx={{
+                bgcolor: 'primary.main',
+                border: 1,
+                borderTop: 0,
+                borderColor: 'primary.contrastText',
+              }}>
+                <Typography sx={{
+                  paddingLeft: 1,
+                  color: 'primary.contrastText',
+                  fontSize: '.90rem',
+                }}>
+                  {data.technologiesArray[0].technologyContent[0].contentTitle}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{
+                  color: 'secondary.contrastText'
+                }} />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+                sx={{
+                  bgcolor: 'primary.main',
+                  borderRight: 1,
+                  borderColor: 'secondary.contrastText',
+                }}
+              >
+                <Typography sx={{ width: '33%', 
+                flexShrink: 0, 
+                fontSize: '1.0rem',
+                color: 'secondary.main',
+                 }}>
+                  {data.technologiesArray[1].technologyName}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails sx={{
+                bgcolor: 'primary.main',
+                border: 1,
+                borderTop: 0,
+                borderColor: 'primary.contrastText',
+              }}>
+                <Typography sx={{
+                  paddingLeft: 1,
+                  color: 'primary.contrastText',
+                  fontSize: '.90rem',
+                }}>
+                  {data.technologiesArray[1].technologyContent[0].contentTitle}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+
           </Box>
         </SideNav>
       </Paper>
