@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { styled, alpha } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
@@ -19,11 +19,15 @@ import PermMedia from "@mui/icons-material/PermMedia";
 import Dns from "@mui/icons-material/Dns";
 import Public from "@mui/icons-material/Public";
 
+// ============ QUERIES =============
+
+import { useQuery } from "@apollo/client";
+import { QUERY_TECHNOLOGIES_SIDEBAR } from "../../utils/queries";
+
 // =========== CUSTOM STYLES =============
-import styles from "./style.module.css";
+import "./style.css";
 
-
-const data = [
+const iconData = [
   { icon: <People />, label: "Authentication" },
   { icon: <Dns />, label: "Database" },
   { icon: <PermMedia />, label: "Storage" },
@@ -32,9 +36,9 @@ const data = [
 
 const SideNav = styled(List)(({ theme }) => ({
   ...theme.palette.text.secondary,
-  backgroundColor: alpha(theme.palette.background.paper, 1.00),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.background.paper, 1.00),
+  backgroundColor: alpha(theme.palette.background.paper, 1.0),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.background.paper, 1.0),
   },
   "& .MuiListItemButton-root": {
     paddingLeft: 24,
@@ -47,131 +51,81 @@ const SideNav = styled(List)(({ theme }) => ({
   "& .MuiSvgIcon-root": {
     fontSize: 20,
   },
-
 }));
 
 export default function CustomizedList() {
   const [open, setOpen] = React.useState(true);
+
+  const { loading, data } = useQuery(QUERY_TECHNOLOGIES_SIDEBAR);
+  console.log(data);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-        <Paper
-          elevation={0}
-          sx={{
-            height: "100vh",
-          }}
-        >
-          <SideNav component="nav" disablePadding>
-            <Divider />
-            <ListItem component="div" disablePadding>
-              <ListItemButton sx={{ height: 56 }}>
-                <ListItemIcon>
-                  <Home color="secondary" />
-                </ListItemIcon>
-              </ListItemButton>
-              <Tooltip title="Filter">
-                <IconButton
-                  size="large"
-                  sx={{
-                    "& svg": {
-                      color: "rgba(255,255,255,0.8)",
-                      transition: "0.2s",
-                      transform: "translateX(0) rotate(0)",
-                    },
-                    "&:hover, &:focus": {
-                      bgcolor: "unset",
-                      "& svg:first-of-type": {
-                        transform: "translateX(-4px) rotate(-20deg)",
-                      },
-                      "& svg:last-of-type": {
-                        right: 0,
-                        opacity: 1,
-                      },
-                    },
-                    "&:after": {
-                      content: '""',
-                      position: "absolute",
-                      height: "80%",
-                      display: "block",
-                      left: 0,
-                      width: "1px",
-                      bgcolor: "divider",
-                    },
-                  }}
-                >
-                  <Settings />
-                  <ArrowRight
-                    sx={{ position: "absolute", right: 4, opacity: 0 }}
-                  />
-                </IconButton>
-              </Tooltip>
-            </ListItem>
-            <Divider />
-            <Box
-              // sx={{
-              //   bgcolor: open ? "rgba(71, 98, 130, 0.2)" : null,
-              //   pb: open ? 2 : 0,
-              // }}
-            >
-              <ListItemButton
-                alignItems="flex-start"
-                onClick={() => setOpen(!open)}
+      <Paper
+        elevation={0}
+        sx={{
+          height: "100vh",
+        }}
+      >
+        <SideNav component="nav" disablePadding>
+          <Divider />
+          <ListItem component="div" disablePadding>
+            <ListItemButton sx={{ height: 56 }}>
+              <ListItemIcon>
+                <Home color="secondary" />
+              </ListItemIcon>
+            </ListItemButton>
+            <Tooltip title="Filter">
+              <IconButton
+                size="large"
                 sx={{
-                  px: 3,
-                  pt: 2.5,
-                  pb: open ? 0 : 2.5,
-                  "&:hover, &:focus": { "& svg": { opacity: open ? 1 : 0 } },
+                  "& svg": {
+                    color: "rgba(255,255,255,0.8)",
+                    transition: "0.2s",
+                    transform: "translateX(0) rotate(0)",
+                  },
+                  "&:hover, &:focus": {
+                    bgcolor: "unset",
+                    "& svg:first-of-type": {
+                      transform: "translateX(-4px) rotate(-20deg)",
+                    },
+                    "& svg:last-of-type": {
+                      right: 0,
+                      opacity: 1,
+                    },
+                  },
+                  "&:after": {
+                    content: '""',
+                    position: "absolute",
+                    height: "80%",
+                    display: "block",
+                    left: 0,
+                    width: "1px",
+                    bgcolor: "divider",
+                  },
                 }}
               >
-                <ListItemText
-                  primary="JavaScript"
-                  primaryTypographyProps={{
-                    fontSize: 15,
-                    fontWeight: "medium",
-                    lineHeight: "20px",
-                    mb: "2px",
-                  }}
-                  secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
-                  secondaryTypographyProps={{
-                    noWrap: true,
-                    fontSize: 12,
-                    lineHeight: "16px",
-                    color: open ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.5)",
-                  }}
-                  sx={{ my: 0 }}
+                <Settings />
+                <ArrowRight
+                  sx={{ position: "absolute", right: 4, opacity: 0 }}
                 />
-                <KeyboardArrowDown
-                  sx={{
-                    mr: -1,
-                    opacity: 0,
-                    transform: open ? "rotate(-180deg)" : "rotate(0)",
-                    transition: "0.2s",
-                  }}
-                />
-              </ListItemButton>
-              {open &&
-                data.map((technologies) => (
-                  <ListItemButton
-                    key={technologies.label}
-                    sx={{ py: 0, minHeight: 32, color: "rgba(255,255,255,.8)" }}
-                  >
-                    <ListItemIcon sx={{ color: "inherit" }}>
-                      {technologies.icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={technologies.label}
-                      primaryTypographyProps={{
-                        color: "contrastText",
-                        fontSize: 14,
-                        fontWeight: "medium",
-                      }}
-                    />
-                  </ListItemButton>
-                ))}
-            </Box>
-            
-          </SideNav>
-        </Paper>
-      {/* </ThemeProvider> */}
+              </IconButton>
+            </Tooltip>
+          </ListItem>
+          <Divider />
+          <Box>
+            {open &&
+              data.technologiesArray.map((technology) => (
+                <>
+                  
+                </>
+              ))}
+          </Box>
+        </SideNav>
+      </Paper>
     </>
   );
 }
