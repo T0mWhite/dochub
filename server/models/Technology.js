@@ -10,7 +10,7 @@ const technologySchema = new Schema({
     minlength: 1,
     maxlength: 50,
   },
-  technologyContent: [
+  technologyContents: [
     {
       contentTitle: {
         type: String,

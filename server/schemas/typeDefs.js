@@ -17,10 +17,10 @@ const typeDefs = gql`
   type Technology {
     _id: ID
     technologyName: String
-    technologyContent: [TechContent]
+    technologyContents: [TechContents]
   }
 
-  type TechContent {
+  type TechContents {
     contentTitle: String
     contentBody: [ContentBody]
   }
@@ -36,7 +36,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     getUser(_id: ID): User
-    technologiesArray: [Technology]
+    technologies: [Technology]
     technology(technologyName: String): Technology
   }
 

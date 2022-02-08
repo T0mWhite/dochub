@@ -12,7 +12,7 @@ const resolvers = {
     },
 
     // Get all technologies for the sidebar
-    technologiesArray: async () => {
+    technologies: async () => {
       return await Technology.find({});
     },
 
