@@ -18,7 +18,7 @@ import ResponsiveAppBar from "./Nav/index";
 function Home() {
   return (
     <>
-    <CssBaseline />
+      <CssBaseline />
       <ResponsiveAppBar position="fixed" />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
@@ -26,11 +26,11 @@ function Home() {
             <CustomizedList item />
           </Grid>
           <Grid item xs={9}>
-            <MainGridUi />
+              <MainGridUi />
           </Grid>
         </Grid>
       </Box>
-      </>
+    </>
   );
 }
 
