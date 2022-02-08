@@ -17,6 +17,21 @@
                   ]
                 }
               ]
+            },
+            {
+              "contentTitle": "Functions",
+              "contentBody": [
+                {
+                  "featureName":"Var",
+                  "featureRating": 4,
+                  "featureBody": "Don't use this!",
+                  "featureExample": ["Some code.", "Some more code."],
+                  "featureReference": [
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+                    "https://www.w3schools.com/jsref/jsref_var.asp"
+                  ]
+                }
+              ]
             }
           ]
   },

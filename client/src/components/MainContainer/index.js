@@ -8,10 +8,13 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Link from '@mui/material/Link';
 import DocRating from "./Rating";
+import { useParams } from 'react-router-dom';
 import Typography from "@mui/material/Typography";
-
 import Constex from "../../static/images/Constexample.PNG";
 import Letex from "../../static/images/Letexample.PNG";
+
+import { useQuery } from "@apollo/client";
+import { QUERY_SINGLE_TECHNOLOGY_MAIN } from "../../utils/queries";
 
 const DocTitle = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -47,7 +50,7 @@ const Body = styled(Paper)(({ theme }) => ({
   color: theme.palette.primary.text,
 }));
 
-const AddRevision = styled(Button)(({ theme }) => ({
+const AddRevision = styled("div")(({ theme }) => ({
   ...theme.typography.subtitle1,
   padding: theme.spacing(1),
   position: "relative",
@@ -58,7 +61,7 @@ const AddRevision = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
 }));
 
-const HoistMe = styled(Button)(({ theme }) => ({
+const HoistMe = styled("div")(({ theme }) => ({
   ...theme.typography.subtitle1,
   padding: theme.spacing(1),
   position: "relative",
@@ -79,12 +82,20 @@ const HoistMeCount = styled("div")(({ theme }) => ({
 }));
 
 export default function MainGridUi() {
+
+  const { technologyName } = useParams();
+
+  const { loading, data } = useQuery(QUERY_SINGLE_TECHNOLOGY_MAIN, {
+    variables: { technologyName: technologyName }
+  });
+
+  const technology = data?.technology || {};
+
   return (
     <Box sx={{ flexGrow: 1, justifyContent: "center", margin: "1vw" }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <DocTitle>Javascript</DocTitle>
-          <SubTitle>Variables</SubTitle>
+          <DocTitle>{technology.technologyName}</DocTitle>
         </Grid>
         <Grid
           item
@@ -99,14 +110,10 @@ export default function MainGridUi() {
           <DocRating />
         </Grid>
         <Grid item xs={3}>
-          <Button
-            sx={{
-              border: 1,
-              borderColor: "secondary.main",
-            }}
-          >
             <AddRevision
               sx={{
+                border: 1,
+                borderColor: "secondary.main",
                 textAlign: "center",
               }}
             >
@@ -114,16 +121,12 @@ export default function MainGridUi() {
               <AddCircleTwoToneIcon />
             </AddRevision>
             0 Revisions
-          </Button>
         </Grid>
         <Grid item xs={3}>
-          <Button
-            sx={{
+            <HoistMe sx={{
               border: 1,
               borderColor: "secondary.contrastText",
-            }}
-          >
-            <HoistMe>
+            }}>
               Hoist Me
               <BeachAccessIcon />
             </HoistMe>
@@ -134,9 +137,10 @@ export default function MainGridUi() {
             >
               (34)
             </HoistMeCount>
-          </Button>
         </Grid>
+        {technology.technologyContents.map((technologyContent) => (
         <Grid item xs={12}>
+          <SubTitle>{technologyContent.contentTitle}</SubTitle>
           <Typography variant="h6" gutterBottom component="div" sx={{
             color: 'secondary.main',
           }}>
@@ -202,6 +206,7 @@ export default function MainGridUi() {
           </Link>
           </Typography>
         </Grid>
+        ))}
       </Grid>
     </Box>
   );
