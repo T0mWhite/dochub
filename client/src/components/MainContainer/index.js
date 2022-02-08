@@ -96,6 +96,7 @@ export default function MainGridUi() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <DocTitle>{technology.technologyName}</DocTitle>
+          {technology.technologyContents}
         </Grid>
         <Grid
           item
@@ -138,9 +139,9 @@ export default function MainGridUi() {
               (34)
             </HoistMeCount>
         </Grid>
-        {technology.technologyContents.map((technologyContent) => (
+        {/* {technology.technologyContents.map((technologyContent) => ( */}
         <Grid item xs={12}>
-          <SubTitle>{technologyContent.contentTitle}</SubTitle>
+          <SubTitle>gfdgdfggr</SubTitle>
           <Typography variant="h6" gutterBottom component="div" sx={{
             color: 'secondary.main',
           }}>
@@ -206,7 +207,7 @@ export default function MainGridUi() {
           </Link>
           </Typography>
         </Grid>
-        ))}
+        {/* ))} */}
       </Grid>
     </Box>
   );
