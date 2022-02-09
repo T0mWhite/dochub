@@ -7,11 +7,12 @@ import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import DocRating from "./Rating";
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Typography from "@mui/material/Typography";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_TECHNOLOGY_MAIN } from "../../utils/queries";
+import { Button } from "@mui/material";
 
 const DocTitle = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -47,7 +48,7 @@ const Body = styled(Paper)(({ theme }) => ({
   color: theme.palette.primary.text,
 }));
 
-const AddRevision = styled("div")(({ theme }) => ({
+const AddRevision = styled(Button)(({ theme }) => ({
   ...theme.typography.subtitle1,
   padding: theme.spacing(1),
   position: "relative",
@@ -58,7 +59,7 @@ const AddRevision = styled("div")(({ theme }) => ({
   color: theme.palette.primary.contrastText,
 }));
 
-const HoistMe = styled("div")(({ theme }) => ({
+const HoistMe = styled(Button)(({ theme }) => ({
   ...theme.typography.subtitle1,
   padding: theme.spacing(1),
   position: "relative",
@@ -79,15 +80,19 @@ const HoistMeCount = styled("div")(({ theme }) => ({
 }));
 
 export default function MainGridUi() {
-  // const { technologyName } = useParams();
-  const technologyName = "JavaScript";
+  const { technologyName } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_TECHNOLOGY_MAIN, {
     variables: { technologyName: technologyName },
   });
 
-  const technology = data?.technology || {};
-  console.log(technology);
+  // technologyContents: [{contentBody: []}]
+  
+  if (loading) {
+    return null;
+  }
+  
+  const { technology } = data;
 
   return (
     <Box sx={{ flexGrow: 1, justifyContent: "center", margin: "1vw" }}>
