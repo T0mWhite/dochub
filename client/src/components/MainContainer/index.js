@@ -85,18 +85,22 @@ export default function MainGridUi() {
 
   const { technologyName } = useParams();
 
+  console.log(technologyName);
+
   const { loading, data } = useQuery(QUERY_SINGLE_TECHNOLOGY_MAIN, {
     variables: { technologyName: technologyName }
   });
 
   const technology = data?.technology || {};
 
+  console.log(technology)
+
   return (
     <Box sx={{ flexGrow: 1, justifyContent: "center", margin: "1vw" }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <DocTitle>{technology.technologyName}</DocTitle>
-          {technology.technologyContents}
+          {/* `${technology.technologyContents}` */}
         </Grid>
         <Grid
           item
@@ -139,13 +143,19 @@ export default function MainGridUi() {
               (34)
             </HoistMeCount>
         </Grid>
-        {/* {technology.technologyContents.map((technologyContent) => ( */}
+        {technology.technologyContents.map((technologyContent) => (
         <Grid item xs={12}>
-          <SubTitle>gfdgdfggr</SubTitle>
-          <Typography variant="h6" gutterBottom component="div" sx={{
+          <SubTitle>{technologyContent.contentTitle}</SubTitle>
+
+          {technologyContent.contentBody.map((content) => (
+              
+              <Typography variant="h6" gutterBottom component="div" sx={{
             color: 'secondary.main',
           }}>
-            Var:</Typography>
+            {content.featureName}:</Typography>
+        
+          ))};
+          
           <Typography variant="body1" gutterBottom>
             Deprecated variable declaration. Not recommended for use.
           </Typography>
@@ -207,7 +217,7 @@ export default function MainGridUi() {
           </Link>
           </Typography>
         </Grid>
-        {/* ))} */}
+        ))}
       </Grid>
     </Box>
   );
