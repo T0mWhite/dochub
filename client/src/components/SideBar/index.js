@@ -64,11 +64,13 @@ export default function CustomizedList() {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const fakeKey ="hello world"
+
   if (loading) {
     return <div>Loading...</div>;
   }
   return (
-    <>
+    <div key={fakeKey}>
       <Paper
         elevation={0}
         sx={{
@@ -124,10 +126,10 @@ export default function CustomizedList() {
                       color: "secondary.main",
                     }}
                   >
-                    <div>{technology.technologyName}</div>
+                    <Link to={technology.technologyName}>{technology.technologyName}</Link>
                   </Typography>
                 </AccordionSummary>
-                {technology.technologyContents.map((technologyContent) => (          
+                {technology.technologyContents.map((technologyContent) => (
                   <AccordionDetails
                     sx={{
                       bgcolor: "primary.main",
@@ -143,7 +145,9 @@ export default function CustomizedList() {
                         fontSize: ".90rem",
                       }}
                     >
-                      <Link to="/JavaScript"> {technologyContent.contentTitle}
+                      <Link to="/JavaScript">
+                        {" "}
+                        {technologyContent.contentTitle}
                       </Link>
                     </Typography>
                   </AccordionDetails>
@@ -153,6 +157,6 @@ export default function CustomizedList() {
           </Box>
         </SideNav>
       </Paper>
-    </>
+    </div>
   );
 }
