@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import { styled, alpha } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
-import Button from "@mui/material/Button";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import Accordion from "@mui/material/Accordion";
@@ -17,7 +16,7 @@ import People from "@mui/icons-material/People";
 import PermMedia from "@mui/icons-material/PermMedia";
 import Dns from "@mui/icons-material/Dns";
 import Public from "@mui/icons-material/Public";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // ============ QUERIES =============
 
@@ -128,7 +127,7 @@ export default function CustomizedList() {
                     <div>{technology.technologyName}</div>
                   </Typography>
                 </AccordionSummary>
-                {technology.technologyContents.map((technologyContent) => (
+                {technology.technologyContents.map((technologyContent) => (          
                   <AccordionDetails
                     sx={{
                       bgcolor: "primary.main",
@@ -144,7 +143,8 @@ export default function CustomizedList() {
                         fontSize: ".90rem",
                       }}
                     >
-                      {technologyContent.contentTitle}
+                      <Link to="/JavaScript"> {technologyContent.contentTitle}
+                      </Link>
                     </Typography>
                   </AccordionDetails>
                 ))}
