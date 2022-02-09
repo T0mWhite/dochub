@@ -9,8 +9,28 @@
                 {
                   "featureName":"Var",
                   "featureRating": 4,
-                  "featureBody": "Don't use this!",
-                  "featureExample": ["Some code.", "Some more code."],
+                  "featureBody": "Deprecated variable declaration. Not recommended for use.",
+                  "featureExample": ["Some var code.", "Some more  varcode."],
+                  "featureReference": [
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
+                    "https://www.w3schools.com/jsref/jsref_var.asp"
+                  ]
+                },
+                {
+                  "featureName":"Let",
+                  "featureRating": 4,
+                  "featureBody": "Standard variable declaration. Use let to create a variable that you will want to change or edit. (Mutable variable)",
+                  "featureExample": ["Some let code.", "Some more let code."],
+                  "featureReference": [
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let",
+                    "https://www.w3schools.com/JS/js_let.asp"
+                  ]
+                },
+                {
+                  "featureName":"Const",
+                  "featureRating": 4,
+                  "featureBody": "Use const(ant) to create a variable that you don't want to change. (Immutable variable)",
+                  "featureExample": ["Some const code.", "Some more const code."],
                   "featureReference": [
                     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
                     "https://www.w3schools.com/jsref/jsref_var.asp"
@@ -27,8 +47,8 @@
                   "featureBody": "Don't use this!",
                   "featureExample": ["Some code.", "Some more code."],
                   "featureReference": [
-                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var",
-                    "https://www.w3schools.com/jsref/jsref_var.asp"
+                    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const",
+                    "https://www.w3schools.com/JS/js_const.asp"
                   ]
                 }
               ]
@@ -55,7 +75,7 @@
               ]
             },
             {
-              "contentTitle": "Frank",
+              "contentTitle": "State",
               "contentBody": [
                 {
                   "featureName":"useState",
