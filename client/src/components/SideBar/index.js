@@ -143,7 +143,7 @@ export default function CustomizedList() {
                         fontSize: ".90rem",
                       }}
                     >
-                      <Link to="/JavaScript"> {technologyContent.contentTitle}
+                      <Link to="/JavaScript">{technologyContent.contentTitle}
                       </Link>
                     </Typography>
                   </AccordionDetails>
